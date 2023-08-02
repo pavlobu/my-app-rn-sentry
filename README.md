@@ -12,11 +12,12 @@ This project is created to as a reference for [this issue](https://github.com/ge
     `dsn: "https://1234@o1234.ingest.sentry.io/1234",` to your sentry dsn values.
 
 * set your own values in `ios/sentry.properties`:
-  ```
+
+```
 defaults.org=myapp-inc
 defaults.project=react-native-test
 auth.token=1234
-  ```
+```
 
 * And other Apple prerequisites. You will need xcode, xcode commandline tools, have developer apple id and be logged in with this apple dev id on your xcode and MacOS.
 
