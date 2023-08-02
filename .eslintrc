@@ -1,0 +1,76 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2020, // Allows for the parsing of modern ECMAScript features
+        "sourceType": "module", // Allows for the use of imports
+        "ecmaFeatures": {
+            "jsx": true // Allows for the parsing of JSX
+        }
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    },
+    "plugins": [
+        "react-hooks",
+        "simple-import-sort",
+        "import",
+        "module-resolver"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier/@typescript-eslint",
+        "plugin:prettier/recommended",
+        "plugin:import/warnings",
+        "plugin:import/errors",
+        "plugin:import/typescript"
+    ],
+    "rules": {
+        "simple-import-sort/imports": "error",
+        "sort-imports": "off",
+        "import/order": "off",
+        "react/prop-types": "off",
+        "max-len": [
+                "error",
+            {
+                "code": 80,
+                "ignorePattern": "^import .*"
+            }
+        ],
+        "react/display-name": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/no-array-index-key": "off",
+        "no-plusplus": "off",
+        "linebreak-style": "off", // For Windows/WebStorm
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "error",
+        "no-case-declarations": "off",
+        "no-empty-pattern": "error",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": [
+            "error"
+        ],
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "import/namespace": "off",
+        "module-resolver/use-alias": "error"
+    },
+    "settings": {
+        "react": {
+            "version": "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
+        },
+        "import/resolver": {
+            "babel-module": {},
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"],
+                "moduleDirectory": ["node_modules", "src/"]
+            }
+        }
+    }
+}

@@ -1,0 +1,51 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+# update_fastlane
+ENV['ITMSTRANSPORTER_FORCE_ITMS_PACKAGE_UPLOAD'] = 'false'
+
+default_platform(:ios)
+# xcodes(version: "14.2.0")
+
+platform :ios do
+ before_all do
+    setup_circle_ci
+  end
+
+
+  desc "Builds, achieves and uploads ipa to TestFlight"
+    lane :testflight do
+      # match(type: "appstore")
+      # app_store_connect_api_key
+      # increment_build_number(
+      #   build_number: app_store_build_number(
+      #     version: "1.0.22",
+      #     initial_build_number:0,
+      #     live: false,
+      #     app_identifier: "com.myapptestsentry.app") + 1,
+      #   xcodeproj: "MyAppTestSentry.xcodeproj"
+      # )
+      gym(
+        xcargs: "OTHER_CFLAGS=-Wno-documentation",
+        scheme: "MyAppTestSentry",
+        export_options: {
+            method: "app-store",
+            provisioningProfiles: {
+              "com.myapptestsentry.app" => "match AppStore com.myapptestsentry.app"
+            }
+          }
+      )
+      upload_to_testflight(
+        skip_submission: true,
+        skip_waiting_for_build_processing: true
+      )
+    end
+end

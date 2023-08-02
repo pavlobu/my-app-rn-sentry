@@ -1,0 +1,11 @@
+# top-most EditorConfig file
+root = true
+
+# Windows files
+[*.bat]
+end_of_line = crlf
+
+# Unix-style newlines with a newline ending every file
+[*.{js,ts}]
+end_of_line = lf
+insert_final_newline = true
